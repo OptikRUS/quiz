@@ -1,12 +1,11 @@
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 
-from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.urls import reverse
-from django.views.generic import ListView
 
-from mainapp.models import Quiz, QuizCategory, Question, Answer
+from mainapp.models import Quiz, QuizCategory
 from quiz.forms import UserRegistrationForm
 
 
@@ -35,6 +34,7 @@ def registration(request):
     return render(request, 'registration/registration.html', context)
 
 
+@login_required
 def catalogs(request, pk=None):
     if pk:
         tests = Quiz.objects.filter(category_id=pk)
@@ -48,42 +48,45 @@ def catalogs(request, pk=None):
     return render(request, 'mainapp/tests.html', context)
 
 
+@login_required
 def test(request, pk):
     test_ = Quiz.objects.filter(id=pk).first()
     questions = test_.questions.all()
+    try:
+        question = questions[0]
+        question_pk = question.pk
+    except IndexError:
+        question = 'нет вопросов'
+        question_pk = 0
+
     context = {
         'title': test_.title,
+        'question': question,
         'category': test_.category.name,
         'description': test_.description,
         'questions_count': questions.count(),
-        'questions': questions,
         'test_id': pk,
+        'question_pk': question_pk,
+        'pk': 0,
     }
     return render(request, 'mainapp/test/index.html', context)
 
 
-# def get_question(request, test_id, pk):
-#
-#     pass
+@login_required
+def get_question(request, test_id, pk=0):
+    test_ = Quiz.objects.filter(id=test_id).first()
+    questions = test_.questions.all()
+    max_page = len(questions)
+    question = test_.questions.all()[pk]
 
+    context = {
+        'title': 'Вопросы',
+        'question': question,
+        'description': question.description,
+        'answers': question.answers.all(),
+        'test_id': question.test_id,
+        'pk': pk + 1,
+        'max_page': max_page,
+    }
+    return render(request, 'mainapp/test/question.html', context)
 
-# class ListQuestions(ListView):
-#     model = Question
-#     template_name = 'mainapp/test/question.html'
-#     paginate_by = 1
-
-
-# def question(request, pk, page):
-#     questions = Question.objects.filter(test_id=pk)
-#     paginator = Paginator(questions, len(questions))
-#     try:
-#         questions_paginator = paginator.page(page)
-#     except PageNotAnInteger:
-#         questions_paginator = paginator.page(1)
-#     except EmptyPage:
-#         questions_paginator = paginator.page(paginator.num_pages)
-#     context = {
-#         'title': 'вопросы',
-#         'questions': questions_paginator,
-#     }
-#     return render(request, 'mainapp/test/question.html', context)

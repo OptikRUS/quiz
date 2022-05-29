@@ -1,34 +1,33 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-    <h1>some quest</h1>
-{#<div class='container'>#}
-{#  <div class='mt-5 pt-5 ml-5 pl-5'>#}
-{#    <p><strong>Вопрос № {{ page_obj.number }}</strong></p>#}
-{#    {% for quest in object_list %}#}
-{#    <p>{{ quest.description }}</p>#}
-{#    {% endfor %}#}
-{#  </div>#}
-{##}
-{#  <!-- Pagination -->#}
-{#  <div class='pagination justify-content-center'>#}
-{#    {% if page_obj.has_previous %}#}
-{#      <a href='{% url "questions" page_obj.number %}?page={{ page_obj.previous_page_number }}'>Previous </a>#}
-{#    {% endif %}#}
-{##}
-{#    <span class='mx-4'>#}
-{#      Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}#}
-{#    </span>#}
-{##}
-{#    {% if page_obj.has_next %}#}
-{#      <a href='{% url "questions" page_obj.number %}?page={{ page_obj.next_page_number }}' > Next</a>#}
-{#    {% endif %}#}
-{#  </div>#}
-{#  <!-- END Pagination -->#}
-{#</div>#}
-</body>
-</html>
+{% extends 'mainapp/base.html' %}
+
+{% block content %}
+    <main>
+        <div class="container-fluid">
+            <div class="card mb-4">
+                <div class="card-header">
+                    <div class="card-body">
+                        <div class="table-responsive">
+                        {% if pk != max_page  %}
+                            <h2 class="mt-4">{{ question }} {{ question.pk }}</h2>
+                            {% for answer in answers %}
+                                <p class="mt-4">{{ answer }}</p>
+                            {% endfor %}
+                            <div class="col-lg-12" style="margin-top: 33px;">
+                                <a href="{% url 'question' test_id pk %}" class="btn btn-info btn-block">Ответить</a>
+                            </div>
+                        {% else %}
+                            <h2 class="mt-4">{{ question }} {{ question.pk }}</h2>
+                            {% for answer in answers %}
+                                <p class="mt-4">{{ answer }}</p>
+                            {% endfor %}
+                            <div class="col-lg-12" style="margin-top: 33px;">
+                                <a href="#" class="btn btn-info btn-block">Завершить</a>
+                            </div>
+                        {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+{% endblock %}
