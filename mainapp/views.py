@@ -2,11 +2,10 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
-
 from django.urls import reverse
 
 from mainapp.models import Quiz, QuizCategory
-from quiz.forms import UserRegistrationForm, QuestionForm
+from quiz.forms import UserRegistrationForm
 
 
 def index(request):
@@ -74,10 +73,22 @@ def test(request, pk):
 
 @login_required
 def get_question(request, test_id, pk=0):
-    test_ = Quiz.objects.filter(id=test_id).first()
-    questions = test_.questions.all()
-    max_page = len(questions)
-    question = test_.questions.all()[pk]
+    quiz = Quiz.objects.filter(id=test_id).first()
+
+    try:
+        question = quiz.questions.all()[pk]
+    except IndexError:
+        context = {
+            'title': 'Результаты',
+        }
+        return render(request, 'mainapp/test/result.html', context)
+    else:
+        pk += 1
+
+    print(request.POST)
+
+    result_answer = [i for i in request.POST.values()][1:]
+    print(result_answer)
 
     context = {
         'title': 'Вопросы',
@@ -85,8 +96,6 @@ def get_question(request, test_id, pk=0):
         'description': question.description,
         'answers': question.answers.all(),
         'test_id': question.test_id,
-        'pk': pk + 1,
-        'max_page': max_page,
+        'pk': pk,
     }
     return render(request, 'mainapp/test/question.html', context)
-

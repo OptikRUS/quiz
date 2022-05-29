@@ -7,48 +7,26 @@
                 <div class="card-header">
                     <div class="card-body">
                         <div class="table-responsive">
-                            {% if pk != max_page %}
-                                <h2 class="mt-4">{{ question }} {{ question.pk }}</h2>
-                                <form action="#" method="post" enctype="multipart/form-data">
-                                    {% csrf_token %}
-                                    {% for answer in answers %}
-                                        <div class="form-row">
-                                            <div class="col-lg-6">
-                                                <div class="form-group">
-                                                    <input type="checkbox" name="" id="">
-                                                    <label for="">{{ answer }}</label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    {% endfor %}
-                                </form>
-                                <div class="col-lg-12" style="margin-top: 33px;">
-                                    <input href="{% url 'question' test_id pk %}"
-                                           class="btn btn-info btn-block badge-success"
-                                           type="submit" value="Ответить">
-                                    <a href="{% url 'question' test_id pk %}" class="btn btn-info btn-block">
-                                        Дальше
-                                    </a>
-                                </div>
-                            {% else %}
-                                <h2 class="mt-4">{{ question }} {{ question.pk }}</h2>
+                            <h2 class="mt-4">{{ question }} {{ question.pk }}</h2>
+                            <form action="{% url 'question' test_id pk %}" method="post" id="form"
+                                  enctype="multipart/form-data">
+                                {% csrf_token %}
                                 {% for answer in answers %}
                                     <div class="form-row">
                                         <div class="col-lg-6">
                                             <div class="form-group">
-                                                <input type="checkbox" name="" id="">
-                                                <label for="">{{ answer }}</label>
+                                                <input type="checkbox" id="{{ answer.pk }}"
+                                                       name="{{ answer.pk }}"
+                                                       value="{{ answer.is_right }}">
+                                                <label for="{{ answer.pk }}"> {{ answer }} </label><br>
                                             </div>
                                         </div>
                                     </div>
                                 {% endfor %}
-                                <div class="col-lg-12" style="margin-top: 33px;">
-                                    <input href="{% url 'question' test_id pk %}"
-                                           class="btn btn-info btn-block badge-success"
-                                           type="submit" value="Ответить">
-                                    <a href="#" class="btn btn-info btn-block btn-danger">Завершить</a>
-                                </div>
-                            {% endif %}
+                                <input href="{% url 'index' %}"
+                                       class="btn btn-info btn-block badge-success"
+                                       type="submit" value="Ответить">
+                            </form>
                         </div>
                     </div>
                 </div>
