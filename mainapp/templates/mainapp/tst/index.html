@@ -1,0 +1,22 @@
+{% extends 'mainapp/base.html' %}
+
+{% block content %}
+    <main>
+        <div class="container-fluid">
+            <div class="card mb-4">
+                <div class="card-header">
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <h1 class="mt-4">{{ title }} из категории {{ category }}</h1>
+                            <h2 class="mt-4">{{ description }}</h2>
+                            <h3 class="mt-4">Количество вопросов: {{ questions_count }}</h3>
+                            <div class="col-lg-12" style="margin-top: 33px;">
+                                <a href="#" class="btn btn-info btn-block">Начать</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+{% endblock %}

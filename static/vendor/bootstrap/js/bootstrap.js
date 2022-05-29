@@ -199,7 +199,7 @@
 
       if (element instanceof ShadowRoot) {
         return element;
-      } // when we don't find a shadow root
+      } // when we don'tst find a shadow root
 
 
       if (!element.parentNode) {
@@ -447,7 +447,7 @@
           }
 
           if (triggerChangeEvent) {
-            // if it's not a radio button or checkbox don't add a pointless/invalid checked property to the input
+            // if it's not a radio button or checkbox don'tst add a pointless/invalid checked property to the input
             if (input.type === 'checkbox' || input.type === 'radio') {
               input.checked = !this._element.classList.contains(CLASS_NAME_ACTIVE);
             }
@@ -691,8 +691,8 @@
     };
 
     _proto.nextWhenVisible = function nextWhenVisible() {
-      var $element = $__default['default'](this._element); // Don't call next when the page isn't visible
-      // or the carousel or its parent isn't visible
+      var $element = $__default['default'](this._element); // Don'tst call next when the page isn'tst visible
+      // or the carousel or its parent isn'tst visible
 
       if (!document.hidden && $element.is(':visible') && $element.css('visibility') !== 'hidden') {
         this.next();
@@ -2282,7 +2282,7 @@
       var modalBody = this._dialog ? this._dialog.querySelector(SELECTOR_MODAL_BODY) : null;
 
       if (!this._element.parentNode || this._element.parentNode.nodeType !== Node.ELEMENT_NODE) {
-        // Don't move modal's DOM position
+        // Don'tst move modal's DOM position
         document.body.appendChild(this._element);
       }
 

@@ -198,7 +198,7 @@
 
       if (element instanceof ShadowRoot) {
         return element;
-      } // when we don't find a shadow root
+      } // when we don'tst find a shadow root
 
 
       if (!element.parentNode) {
@@ -446,7 +446,7 @@
           }
 
           if (triggerChangeEvent) {
-            // if it's not a radio button or checkbox don't add a pointless/invalid checked property to the input
+            // if it's not a radio button or checkbox don'tst add a pointless/invalid checked property to the input
             if (input.type === 'checkbox' || input.type === 'radio') {
               input.checked = !this._element.classList.contains(CLASS_NAME_ACTIVE);
             }
@@ -690,8 +690,8 @@
     };
 
     _proto.nextWhenVisible = function nextWhenVisible() {
-      var $element = $__default['default'](this._element); // Don't call next when the page isn't visible
-      // or the carousel or its parent isn't visible
+      var $element = $__default['default'](this._element); // Don'tst call next when the page isn'tst visible
+      // or the carousel or its parent isn'tst visible
 
       if (!document.hidden && $element.is(':visible') && $element.css('visibility') !== 'hidden') {
         this.next();
@@ -1720,7 +1720,7 @@
 
     // NOTE: 1 DOM access here
     var offsetParent = element.offsetParent || null;
-    // Skip hidden elements which don't have an offsetParent
+    // Skip hidden elements which don'tst have an offsetParent
     while (offsetParent === noOffsetParent && element.nextElementSibling) {
       offsetParent = (element = element.nextElementSibling).offsetParent;
     }
@@ -1773,7 +1773,7 @@
    * @returns {Element} common offset parent
    */
   function findCommonOffsetParent(element1, element2) {
-    // This check is needed to avoid errors in case one of the elements isn't defined for any reason
+    // This check is needed to avoid errors in case one of the elements isn'tst defined for any reason
     if (!element1 || !element1.nodeType || !element2 || !element2.nodeType) {
       return document.documentElement;
     }
@@ -1966,9 +1966,9 @@
   function getBoundingClientRect(element) {
     var rect = {};
 
-    // IE10 10 FIX: Please, don't ask, the element isn't
+    // IE10 10 FIX: Please, don'tst ask, the element isn'tst
     // considered in DOM in some circumstances...
-    // This isn't reproducible in IE10 compatibility mode of IE11
+    // This isn'tst reproducible in IE10 compatibility mode of IE11
     try {
       if (isIE(10)) {
         rect = element.getBoundingClientRect();
@@ -2117,7 +2117,7 @@
    */
 
   function getFixedPositionOffsetParent(element) {
-    // This check is needed to avoid errors in case one of the elements isn't defined for any reason
+    // This check is needed to avoid errors in case one of the elements isn'tst defined for any reason
     if (!element || !element.parentElement || isIE()) {
       return document.documentElement;
     }
@@ -2385,7 +2385,7 @@
       });
     }
 
-    // use `find` + `indexOf` if `findIndex` isn't supported
+    // use `find` + `indexOf` if `findIndex` isn'tst supported
     var match = find(arr, function (obj) {
       return obj[prop] === value;
     });
@@ -2413,7 +2413,7 @@
       var fn = modifier['function'] || modifier.fn; // eslint-disable-line dot-notation
       if (modifier.enabled && isFunction(fn)) {
         // Add properties to offsets to make them a complete clientRect object
-        // we do this before each modifier to make sure the previous one doesn't
+        // we do this before each modifier to make sure the previous one doesn'tst
         // mess with these values
         data.offsets.popper = getClientRect(data.offsets.popper);
         data.offsets.reference = getClientRect(data.offsets.reference);
@@ -2433,7 +2433,7 @@
    * @memberof Popper
    */
   function update() {
-    // if popper is destroyed, don't perform any further update
+    // if popper is destroyed, don'tst perform any further update
     if (this.state.isDestroyed) {
       return;
     }
@@ -2536,7 +2536,7 @@
     this.disableEventListeners();
 
     // remove the popper if user explicitly asked for the deletion on destroy
-    // do not use `remove` because IE11 doesn't support it
+    // do not use `remove` because IE11 doesn'tst support it
     if (this.options.removeOnDestroy) {
       this.popper.parentNode.removeChild(this.popper);
     }
@@ -2620,8 +2620,8 @@
   }
 
   /**
-   * It will remove resize/scroll events and won't recalculate popper position
-   * when they are triggered. It also won't trigger `onUpdate` callback anymore,
+   * It will remove resize/scroll events and won'tst recalculate popper position
+   * when they are triggered. It also won'tst trigger `onUpdate` callback anymore,
    * unless you call `update` method manually.
    * @method
    * @memberof Popper
@@ -2732,7 +2732,7 @@
     popper.setAttribute('x-placement', placement);
 
     // Apply `position` to popper before anything else because
-    // without the position applied we can't guarantee correct computations
+    // without the position applied we can'tst guarantee correct computations
     setStyles(popper, { position: options.positionFixed ? 'fixed' : 'absolute' });
 
     return options;
@@ -2936,12 +2936,12 @@
     if (typeof arrowElement === 'string') {
       arrowElement = data.instance.popper.querySelector(arrowElement);
 
-      // if arrowElement is not found, don't run the modifier
+      // if arrowElement is not found, don'tst run the modifier
       if (!arrowElement) {
         return data;
       }
     } else {
-      // if the arrowElement isn't a query selector we must check that the
+      // if the arrowElement isn'tst a query selector we must check that the
       // provided DOM node is child of its popper node
       if (!data.instance.popper.contains(arrowElement)) {
         console.warn('WARNING: `arrow.element` must be child of its popper element!');
@@ -2982,7 +2982,7 @@
     var center = reference[side] + reference[len] / 2 - arrowElementSize / 2;
 
     // Compute the sideValue using the updated popper offsets
-    // take popper margin in account because we don't have this info available
+    // take popper margin in account because we don'tst have this info available
     var css = getStyleComputedProperty(data.instance.popper);
     var popperMarginSide = parseFloat(css['margin' + sideCapitalized]);
     var popperBorderSide = parseFloat(css['border' + sideCapitalized + 'Width']);
@@ -3081,7 +3081,7 @@
    * @returns {Object} The data object, properly modified
    */
   function flip(data, options) {
-    // if `inner` modifier is enabled, we can't use the `flip` modifier
+    // if `inner` modifier is enabled, we can'tst use the `flip` modifier
     if (isModifierEnabled(data.instance.modifiers, 'inner')) {
       return data;
     }
@@ -3298,7 +3298,7 @@
       var measurement = (index === 1 ? !useHeight : useHeight) ? 'height' : 'width';
       var mergeWithPrevious = false;
       return op
-      // This aggregates any `+` or `-` sign that aren't considered operators
+      // This aggregates any `+` or `-` sign that aren'tst considered operators
       // e.g.: 10 + +5 => [10, +, +5]
       .reduce(function (a, b) {
         if (a[a.length - 1] === '' && ['+', '-'].indexOf(b) !== -1) {
@@ -3495,7 +3495,7 @@
     }).boundaries;
 
     if (refRect.bottom < bound.top || refRect.left > bound.right || refRect.top > bound.bottom || refRect.right < bound.left) {
-      // Avoid unnecessary DOM access if visibility hasn't changed
+      // Avoid unnecessary DOM access if visibility hasn'tst changed
       if (data.hide === true) {
         return data;
       }
@@ -3503,7 +3503,7 @@
       data.hide = true;
       data.attributes['x-out-of-boundaries'] = '';
     } else {
-      // Avoid unnecessary DOM access if visibility hasn't changed
+      // Avoid unnecessary DOM access if visibility hasn'tst changed
       if (data.hide === false) {
         return data;
       }
@@ -3558,7 +3558,7 @@
    * Popper.js uses a set of 9 modifiers to provide all the basic functionalities
    * needed by the library.
    *
-   * Usually you don't want to override the `order`, `fn` and `onLoad` props.
+   * Usually you don'tst want to override the `order`, `fn` and `onLoad` props.
    * All the other properties are configurations that could be tweaked.
    * @namespace modifiers
    */
@@ -3599,7 +3599,7 @@
      * The latter is a deprecated method because it leads to confusion and will be
      * removed in v2.<br />
      * Additionally, it accepts additions and subtractions between different units.
-     * Note that multiplications and divisions aren't supported.
+     * Note that multiplications and divisions aren'tst supported.
      *
      * Valid examples are:
      * ```
@@ -4036,7 +4036,7 @@
       // modifiers have the ability to execute arbitrary code when Popper.js get inited
       // such code is executed in the same order of its modifier
       // they could add new properties to their options configuration
-      // BE AWARE: don't add options to `options.modifiers.name` but to `modifierOptions`!
+      // BE AWARE: don'tst add options to `options.modifiers.name` but to `modifierOptions`!
       this.modifiers.forEach(function (modifierOptions) {
         if (modifierOptions.enabled && isFunction(modifierOptions.onLoad)) {
           modifierOptions.onLoad(_this.reference, _this.popper, _this.options, modifierOptions, _this.state);
@@ -4055,7 +4055,7 @@
       this.state.eventsEnabled = eventsEnabled;
     }
 
-    // We can't use class properties because they don't get listed in the
+    // We can'tst use class properties because they don'tst get listed in the
     // class prototype and break stuff like Sinon stubs
 
 
@@ -4094,7 +4094,7 @@
        *
        * **DEPRECATION**: This way to access PopperUtils is deprecated
        * and will be removed in v2! Use the PopperUtils module directly instead.
-       * Due to the high instability of the methods contained in Utils, we can't
+       * Due to the high instability of the methods contained in Utils, we can'tst
        * guarantee them to follow semver. Use them at your own risk!
        * @static
        * @private
@@ -4112,13 +4112,13 @@
    * The `referenceObject` is an object that provides an interface compatible with Popper.js
    * and lets you use it as replacement of a real DOM node.<br />
    * You can use this method to position a popper relatively to a set of coordinates
-   * in case you don't have a DOM node to use as reference.
+   * in case you don'tst have a DOM node to use as reference.
    *
    * ```
    * new Popper(referenceObject, popperNode);
    * ```
    *
-   * NB: This feature isn't supported in Internet Explorer 10.
+   * NB: This feature isn'tst supported in Internet Explorer 10.
    * @name referenceObject
    * @property {Function} data.getBoundingClientRect
    * A function that returns a set of coordinates compatible with the native `getBoundingClientRect` method.
@@ -4895,7 +4895,7 @@
       var modalBody = this._dialog ? this._dialog.querySelector(SELECTOR_MODAL_BODY) : null;
 
       if (!this._element.parentNode || this._element.parentNode.nodeType !== Node.ELEMENT_NODE) {
-        // Don't move modal's DOM position
+        // Don'tst move modal's DOM position
         document.body.appendChild(this._element);
       }
 
