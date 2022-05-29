@@ -49,28 +49,30 @@ def catalogs(request, pk=None):
 
 def test(request, pk):
     test_ = Test.objects.filter(id=pk).first()
-    questions = Question.objects.filter(test_id=test_.pk)
+    questions = test_.questions.all()
     context = {
         'title': test_.title,
         'category': test_.category.name,
         'description': test_.description,
         'questions_count': questions.count(),
+        'questions': questions,
+        'page': 0,
+        'test_id': pk,
     }
-    return render(request, 'mainapp/tst/index.html', context)
+    return render(request, 'mainapp/test/index.html', context)
 
 
-def question(request, pk, page=1):
-    questions = Question.objects.filter(test_id=pk)
-    paginator = Paginator(questions, 1)
-    try:
-        questions_paginator = paginator.page(page)
-    except PageNotAnInteger:
-        questions_paginator = paginator.page(1)
-    except EmptyPage:
-        questions_paginator = paginator.page(paginator.num_pages)
-
-    context = {
-        'title': 'вопросы',
-        'questions': questions_paginator,
-    }
-    return render(request, 'mainapp/tst/question.html', context)
+# def question(request, pk, page):
+#     questions = Question.objects.filter(test_id=pk)
+#     paginator = Paginator(questions, len(questions))
+#     try:
+#         questions_paginator = paginator.page(page)
+#     except PageNotAnInteger:
+#         questions_paginator = paginator.page(1)
+#     except EmptyPage:
+#         questions_paginator = paginator.page(paginator.num_pages)
+#     context = {
+#         'title': 'вопросы',
+#         'questions': questions_paginator,
+#     }
+#     return render(request, 'mainapp/test/question.html', context)
