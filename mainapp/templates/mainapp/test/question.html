@@ -5,6 +5,30 @@
     <title>Title</title>
 </head>
 <body>
-    <h1>some question</h1>
+    <h1>some quest</h1>
+{#<div class='container'>#}
+{#  <div class='mt-5 pt-5 ml-5 pl-5'>#}
+{#    <p><strong>Вопрос № {{ page_obj.number }}</strong></p>#}
+{#    {% for quest in object_list %}#}
+{#    <p>{{ quest.description }}</p>#}
+{#    {% endfor %}#}
+{#  </div>#}
+{##}
+{#  <!-- Pagination -->#}
+{#  <div class='pagination justify-content-center'>#}
+{#    {% if page_obj.has_previous %}#}
+{#      <a href='{% url "questions" page_obj.number %}?page={{ page_obj.previous_page_number }}'>Previous </a>#}
+{#    {% endif %}#}
+{##}
+{#    <span class='mx-4'>#}
+{#      Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}#}
+{#    </span>#}
+{##}
+{#    {% if page_obj.has_next %}#}
+{#      <a href='{% url "questions" page_obj.number %}?page={{ page_obj.next_page_number }}' > Next</a>#}
+{#    {% endif %}#}
+{#  </div>#}
+{#  <!-- END Pagination -->#}
+{#</div>#}
 </body>
 </html>

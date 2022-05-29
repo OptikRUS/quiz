@@ -1,9 +1,9 @@
 from django.contrib import admin
 
-from mainapp.models import TestCategory, Test, Answer, Question
+from mainapp.models import QuizCategory, Quiz, Answer, Question
 
 
-@admin.register(Test)
+@admin.register(Quiz)
 class TestAdmin(admin.ModelAdmin):
     list_display = ('title', 'category')
     fields = ('title', 'description', ('category', ))
@@ -11,8 +11,8 @@ class TestAdmin(admin.ModelAdmin):
     ordering = ('title', )
 
 
-@admin.register(TestCategory)
-class TestCategory(admin.ModelAdmin):
+@admin.register(QuizCategory)
+class QuizCategory(admin.ModelAdmin):
     list_display = ('name', 'description')
 
 

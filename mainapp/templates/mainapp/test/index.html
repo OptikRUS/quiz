@@ -10,11 +10,11 @@
                             <h1 class="mt-4">{{ title }} из категории {{ category }}</h1>
                             <h2 class="mt-4">{{ description }}</h2>
                             <h3 class="mt-4">Количество вопросов: {{ questions_count }}</h3>
-                            {% if page == 0 %}
-                                <div class="col-lg-12" style="margin-top: 33px;">
-                                    <a href="#" class="btn btn-info btn-block">Начать</a>
-                                </div>
-                            {% endif %}
+                            <div class="col-lg-12" style="margin-top: 33px;">
+                                <a href="{{ request.path }}" class="btn btn-info btn-block">Начать</a>
+{#                                <p>{{ request.path }}</p>#}
+{#                                <p>{{ request.path }}</p>#}
+                            </div>
                         </div>
                     </div>
                 </div>

@@ -3,7 +3,7 @@ from django.template.defaultfilters import truncatewords
 from django.contrib.auth.models import User
 
 
-class TestCategory(models.Model):
+class QuizCategory(models.Model):
     name = models.CharField('название категории', max_length=64, unique=True)
     description = models.TextField('описание', blank=True, null=True)
 
@@ -15,8 +15,8 @@ class TestCategory(models.Model):
         return self.name
 
 
-class Test(models.Model):
-    category = models.ForeignKey(TestCategory, on_delete=models.CASCADE, verbose_name='категория')
+class Quiz(models.Model):
+    category = models.ForeignKey(QuizCategory, on_delete=models.CASCADE, verbose_name='категория')
     title = models.CharField('название теста', max_length=64, unique=True)
     description = models.TextField('описание', blank=True, null=True)
 
@@ -36,7 +36,7 @@ class Question(models.Model):
 
     test = models.ForeignKey(
         verbose_name="Тест",
-        to=Test,
+        to=Quiz,
         on_delete=models.CASCADE,
         related_name="questions",
     )

@@ -4,8 +4,9 @@ from django.shortcuts import render
 
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.urls import reverse
+from django.views.generic import ListView
 
-from mainapp.models import Test, TestCategory, Question, Answer
+from mainapp.models import Quiz, QuizCategory, Question, Answer
 from quiz.forms import UserRegistrationForm
 
 
@@ -36,19 +37,19 @@ def registration(request):
 
 def catalogs(request, pk=None):
     if pk:
-        tests = Test.objects.filter(category_id=pk)
+        tests = Quiz.objects.filter(category_id=pk)
     else:
-        tests = Test.objects.all()
+        tests = Quiz.objects.all()
     context = {
         'title': 'Тесты',
         'tests': tests,
-        'catalog': TestCategory.objects.all(),
+        'catalog': QuizCategory.objects.all(),
     }
     return render(request, 'mainapp/tests.html', context)
 
 
 def test(request, pk):
-    test_ = Test.objects.filter(id=pk).first()
+    test_ = Quiz.objects.filter(id=pk).first()
     questions = test_.questions.all()
     context = {
         'title': test_.title,
@@ -56,10 +57,20 @@ def test(request, pk):
         'description': test_.description,
         'questions_count': questions.count(),
         'questions': questions,
-        'page': 0,
         'test_id': pk,
     }
     return render(request, 'mainapp/test/index.html', context)
+
+
+# def get_question(request, test_id, pk):
+#
+#     pass
+
+
+# class ListQuestions(ListView):
+#     model = Question
+#     template_name = 'mainapp/test/question.html'
+#     paginate_by = 1
 
 
 # def question(request, pk, page):
