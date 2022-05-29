@@ -20,18 +20,24 @@
                 <div class="col-lg-9">
                     <div id="carouselExampleIndicators" class="carousel slide my-4" data-ride="carousel"></div>
                     <div class="row">
-                        {% for test in tests %}
-                            <div class="col-lg-4 col-md-6 mb-4">
-                                <div class="card h-100">
-                                    <div class="card-body">
-                                        <h4 class="card-title">
-                                            <a href="{% url 'test' test.pk %}">{{ test.title }}</a>
-                                        </h4>
-                                        <p class="card-text">{{ test.description }}</p>
+                        {% if tests %}
+                            {% for test in tests %}
+                                <div class="col-lg-4 col-md-6 mb-4">
+                                    <div class="card h-100">
+                                        <div class="card-body">
+                                            <h4 class="card-title">
+                                                <a href="{% url 'test' test.pk %}">{{ test.title }}</a>
+                                            </h4>
+                                            <p class="card-text">{{ test.description }}</p>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        {% endfor %}
+                            {% endfor %}
+                        {% else %}
+                            <h4 class="card-title" style="color: red">
+                                В данной катеогрии нет тестов
+                            </h4>
+                        {% endif %}
                     </div>
                 </div>
             </div>
@@ -55,7 +61,6 @@
         <div class="container">
             <p class="m-0 text-center text-white">Tests for Fortech &copy; OptikRUS 2022</p>
         </div>
-        <!-- /.container -->
     </footer>
 {% endblock %}
 

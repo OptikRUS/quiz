@@ -6,7 +6,7 @@ from django.shortcuts import render
 from django.urls import reverse
 
 from mainapp.models import Quiz, QuizCategory
-from quiz.forms import UserRegistrationForm
+from quiz.forms import UserRegistrationForm, QuestionForm
 
 
 def index(request):
