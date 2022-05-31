@@ -5,7 +5,7 @@ from django.shortcuts import render, get_object_or_404
 from django.urls import reverse, reverse_lazy
 
 from mainapp.models import Quiz, QuizCategory, Answer
-from templates.mainapp.forms import QuestionForm
+from mainapp.forms import QuestionForm
 from quiz.forms import UserRegistrationForm
 
 
@@ -29,15 +29,6 @@ def registration(request):
         'form': form
     }
     return render(request, 'registration/registration.html', context)
-
-
-# class AdminUserCreateView(CreateView):
-#     model = User
-#     template_name = 'registration/registration.html'
-#     form_class = UserRegistrationForm
-#     success_url = reverse_lazy('login')
-#     title = 'Регистрация'
-#     success_message = 'Пользователь успешно создан!'
 
 
 @login_required
