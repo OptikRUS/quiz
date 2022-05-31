@@ -34,5 +34,5 @@ ___
 * Сделать миграции:
   * ```python manage.py makemigrations```
   * ```python manage.py migrate```
-  * Создать суперпользователя ```python manage.py createsuperuser```
-  * Запустить проект ```python manage.py runserver```
+* Создать суперпользователя ```python manage.py createsuperuser```
+* Запустить проект ```python manage.py runserver```
