@@ -108,6 +108,9 @@ def get_question(request, test_id, pk=0):
                 'wrongs': answers_list.count('False'),
                 'all_rights': int(answers_list.count('True') / count_rights * 100),
             }
+            print(form.instance)
+            form.clean_instance()
+            print(form.instance)
             return render(request, 'mainapp/test/result.html', context)
         else:
             pk += 1
@@ -123,5 +126,4 @@ def get_question(request, test_id, pk=0):
         }
         return render(request, 'mainapp/test/question.html', context)
     else:
-        print(form.errors)
         return HttpResponseRedirect(reverse_lazy('question', args=hold))
