@@ -1,0 +1,57 @@
+{% extends 'mainapp/base.html' %}
+{% load static %}
+
+{% block css %}
+    <link href="{% static 'css/tests.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        {% if user.is_authenticated %}
+            <div class="row">
+                <div class="col-lg-3">
+                    <h1 class="my-4">Каталог</h1>
+                    <div class="list-group">
+                        {% for category in catalog %}
+                            <a href="{% url 'catalog' category.pk %}" class="list-group-item">{{ category.name }}</a>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="col-lg-9">
+                    <div id="carouselExampleIndicators" class="carousel slide my-4" data-ride="carousel"></div>
+                    <div class="row">
+                        {% if tests %}
+                            {% for test in tests %}
+                                <div class="col-lg-4 col-md-6 mb-4">
+                                    <div class="card h-100">
+                                        <div class="card-body">
+                                            <h4 class="card-title">
+                                                <a href="{% url 'test' test.pk %}">{{ test.title }}</a>
+                                            </h4>
+                                            <p class="card-text">{{ test.description }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        {% else %}
+                            <h4 class="card-title" style="color: red">
+                                В данной катеогрии нет тестов
+                            </h4>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        {% else %}
+            <div class="text-center">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h4 class="card-title">
+                            Вы не авторизованы
+                        </h4>
+                        <a class="nav-link" href="{% url 'login' %}">Войти?</a>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}

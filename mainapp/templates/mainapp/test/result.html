@@ -1,0 +1,23 @@
+{% extends 'mainapp/base.html' %}
+
+{% block content %}
+    <main>
+        <div class="container-fluid">
+            <div class="card mb-4">
+                <div class="card-header">
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <h1 class="mt-4">{{ title }}:</h1>
+                            <h2 class="mt-4">{{ description }}</h2>
+                            <h3 class="mt-4">Количество вопросов: {{ questions_count }}</h3>
+                            <h3 class="mt-4">Количество ответов: {{ total_answers }}</h3>
+                            <h3 class="mt-4">Количество правильных ответов: {{ rights }}</h3>
+                            <h3 class="mt-4">Количество неправильных ответов ответов: {{ wrongs }}</h3>
+                            <h3 class="mt-4">Процент правильных ответов: {{ all_rights }} %</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+{% endblock %}

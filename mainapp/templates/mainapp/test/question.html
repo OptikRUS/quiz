@@ -1,0 +1,37 @@
+{% extends 'mainapp/base.html' %}
+
+{% block content %}
+    <main>
+        <div class="container-fluid">
+            <div class="card mb-4">
+                <div class="card-header">
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <h2 class="mt-4">{{ question }}</h2>
+                            <form action="{% url 'question' test_id pk %}" method="post" id="form"
+                                  enctype="multipart/form-data">
+                                {% csrf_token %}
+                                {% for answer in answers %}
+                                    <div class="form-row">
+                                        <div class="col-lg-6">
+                                            <div class="form-group">
+                                                <input type="checkbox" id="{{ answer.pk }}" name="{{ answer.pk }}"
+                                                       value="{{ answer.is_right }}">
+                                                {{ answer }}
+                                                {{ form }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                                <input href="{% url 'index' %}"
+                                       class="btn btn-info btn-block badge-success"
+                                       type="submit" value="Ответить">
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+{% endblock %}
