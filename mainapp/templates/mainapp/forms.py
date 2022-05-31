@@ -1,13 +1,5 @@
 from django import forms
 from django.core.exceptions import ValidationError
-from django.forms.widgets import RadioSelect, CheckboxInput
-from django.conf import settings
-
-from mainapp.models import Answer, Question
-
-CHOICES = [
-    ('ON', 'OFF'),
-]
 
 
 class QuestionForm(forms.Form):
@@ -26,7 +18,6 @@ class QuestionForm(forms.Form):
 
     def user_answer_instance(self):
         self.instance.update(self.data)
-        print('instance: ', self.instance)
 
     def clean_instance(self):
         self.instance.clear()
