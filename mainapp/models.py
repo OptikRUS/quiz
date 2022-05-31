@@ -78,6 +78,7 @@ class Answer(models.Model):
     is_right = models.BooleanField(verbose_name="Правильный ответ", default=False)
 
     class Meta:
+        ordering = ['?']
         verbose_name = "Ответ"
         verbose_name_plural = "Ответы"
         unique_together = (("text", "question", "user", "is_admin"),)

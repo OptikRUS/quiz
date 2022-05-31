@@ -10,35 +10,9 @@ CHOICES = [
 ]
 
 
-# class QuestionForm(forms.Form):
-#     checkbox = forms.BooleanField(required=False)
-#     # print(ckeckboxes)
-#
-#     # Agree = forms.BooleanField(required=False, disabled=False,
-#     #                            widget=forms.widgets.CheckboxInput(attrs={'class': 'checkbox-inline'}),
-#     #                            help_text="I accept the terms in the License Agreement",
-#     #                            error_messages={'required': 'Please check the box'})
-#     class Meta:
-#         model = Answer
-#         fields = '__all__'
-
-
-    # def __init__(self, *args, **kwargs):
-    #     super().__init__(*args, **kwargs)
-    #
-    # def clean(self):
-    #     data = super(QuestionForm, self).clean()
-    #     # print(data.items())
-    #
-    # class Meta:
-    #     model = Answer
-    #     fields = ['is_right']
-    #     widgets = {
-    #         'is_anything_required': CheckboxInput(attrs={'class': 'required checkbox form-control'}),
-    #     }
-
-
 class QuestionForm(forms.Form):
+    choices = forms.MultipleChoiceField(label='', required=False, widget=forms.CheckboxSelectMultiple)
+    instance = {}
 
     def is_valid(self):
         if len(self.data) == 1:
@@ -48,7 +22,11 @@ class QuestionForm(forms.Form):
 
     def clean(self):
         if len(self.data) == 1:
-            raise ValidationError("Нужно выбрать выбрать хотя бы один вариант ответа")
+            raise ValidationError("Вы не выбрали ответ")
 
+    def user_answer_instance(self):
+        self.instance.update(self.data)
+        print('instance: ', self.instance)
 
-
+    def clean_instance(self):
+        self.instance.clear()

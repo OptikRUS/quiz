@@ -15,10 +15,10 @@
                                     <div class="form-row">
                                         <div class="col-lg-6">
                                             <div class="form-group">
-                                                <input type="checkbox" id="{{ answer.pk }}"
-                                                       name="{{ answer.pk }}"
+                                                <input type="checkbox" id="{{ answer.pk }}" name="{{ answer.pk }}"
                                                        value="{{ answer.is_right }}">
-                                                <label for="{{ answer.pk }}"> {{ answer }} </label><br>
+                                                {{ answer }}
+                                                {{ form }}
                                             </div>
                                         </div>
                                     </div>
@@ -26,6 +26,7 @@
                                 <input href="{% url 'index' %}"
                                        class="btn btn-info btn-block badge-success"
                                        type="submit" value="Ответить">
+
                             </form>
                         </div>
                     </div>
