@@ -3,16 +3,15 @@ from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse
+from django.views.generic import ListView
 
 from mainapp.models import Quiz, QuizCategory
+from mainapp.templates.mainapp.forms import QuestionForm
 from quiz.forms import UserRegistrationForm
 
 
 def index(request):
-    context = {
-        'title': 'Главная',
-    }
-    return render(request, 'mainapp/index.html', context)
+    return render(request, 'mainapp/index.html', {'title': 'Главная'})
 
 
 def registration(request):
@@ -34,7 +33,7 @@ def registration(request):
 
 
 @login_required
-def catalogs(request, pk=None):
+def catalogs(request, pk=0):
     if pk:
         tests = Quiz.objects.filter(category_id=pk)
     else:
@@ -73,6 +72,13 @@ def test(request, pk):
 
 @login_required
 def get_question(request, test_id, pk=0):
+    if request.method == "POST":
+        form = QuestionForm(request.POST)
+    else:
+        form = QuestionForm()
+
+    print(form.is_valid())
+
     quiz = Quiz.objects.filter(id=test_id).first()
 
     try:
@@ -85,11 +91,6 @@ def get_question(request, test_id, pk=0):
     else:
         pk += 1
 
-    print(request.POST)
-
-    result_answer = [i for i in request.POST.values()][1:]
-    print(result_answer)
-
     context = {
         'title': 'Вопросы',
         'question': question,
@@ -97,5 +98,9 @@ def get_question(request, test_id, pk=0):
         'answers': question.answers.all(),
         'test_id': question.test_id,
         'pk': pk,
+        'form': form,
     }
-    return render(request, 'mainapp/test/question.html', context)
+    if form.is_valid():
+        return render(request, 'mainapp/test/question.html', context)
+    print(form.errors)
+    return HttpResponseRedirect(reverse('question', args=(context['test_id'], context['pk'] - 2)))

@@ -7,7 +7,7 @@
                 <div class="card-header">
                     <div class="card-body">
                         <div class="table-responsive">
-                            <h2 class="mt-4">{{ question }} {{ question.pk }}</h2>
+                            <h2 class="mt-4">{{ question }}</h2>
                             <form action="{% url 'question' test_id pk %}" method="post" id="form"
                                   enctype="multipart/form-data">
                                 {% csrf_token %}
