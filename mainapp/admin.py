@@ -1,7 +1,7 @@
 from django.contrib import admin
+from django import forms
 
 from mainapp.models import QuizCategory, Quiz, Question, Answer
-from django import forms
 
 
 @admin.register(QuizCategory)
