@@ -5,7 +5,7 @@ from django.shortcuts import render, get_object_or_404
 from django.urls import reverse, reverse_lazy
 
 from mainapp.models import Quiz, QuizCategory, Answer
-from mainapp.templates.mainapp.forms import QuestionForm
+from templates.mainapp.forms import QuestionForm
 from quiz.forms import UserRegistrationForm
 
 
