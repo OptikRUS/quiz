@@ -1,32 +1,47 @@
 from django.contrib import admin
+from django.contrib.admin.widgets import FilteredSelectMultiple
 
-from mainapp.models import QuizCategory, Quiz, Answer, Question
-
-
-@admin.register(Quiz)
-class TestAdmin(admin.ModelAdmin):
-    list_display = ('title', 'category')
-    fields = ('title', 'description', ('category', ))
-    search_fields = ('title', )
-    ordering = ('title', )
+from mainapp.models import QuizCategory, Quiz, Question, Answer
+from django import forms
 
 
 @admin.register(QuizCategory)
-class QuizCategory(admin.ModelAdmin):
-    list_display = ('name', 'description')
+class QuizCategoryAdmin(admin.ModelAdmin):
+    search_fields = ('title',)
 
 
-class QuestionAdmin(admin.ModelAdmin):
+class QuestionAdminInline(admin.TabularInline):
     model = Question
-    list_display = ("pk", "short_description")
-    list_display_links = ("short_description",)
+    extra = 0
 
 
-class AnswerAdmin(admin.ModelAdmin):
+class AnswerAdminInline(admin.TabularInline):
     model = Answer
-    list_display = ("pk", "short_text", "question_id")
-    list_display_links = ("short_text",)
+    extra = 0
 
 
-admin.site.register(Question, QuestionAdmin)
-admin.site.register(Answer, AnswerAdmin)
+class QuizAdminForm(forms.ModelForm):
+
+    answers = Answer.objects.all()
+
+    class Meta:
+        model = Quiz
+        exclude = []
+
+
+@admin.register(Question)
+class QuestionAdmin(admin.ModelAdmin):
+    list_display = ('description', 'type_question')
+    search_fields = ('description', )
+    inlines = (AnswerAdminInline, )
+
+
+@admin.register(Quiz)
+class QuizAdmin(admin.ModelAdmin):
+    forms = QuizAdminForm
+
+    list_display = ('title', 'category')
+    list_filter = ('category',)
+    inlines = (QuestionAdminInline, )
+
+    search_fields = ('title', )
