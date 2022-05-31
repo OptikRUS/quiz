@@ -5,7 +5,7 @@ from django.shortcuts import render, get_object_or_404
 from django.urls import reverse, reverse_lazy
 
 from mainapp.models import Quiz, QuizCategory, Answer
-from mainapp.templates.mainapp.forms import QuestionForm
+from mainapp.forms import QuestionForm
 from quiz.forms import UserRegistrationForm
 
 
@@ -29,15 +29,6 @@ def registration(request):
         'form': form
     }
     return render(request, 'registration/registration.html', context)
-
-
-# class AdminUserCreateView(CreateView):
-#     model = User
-#     template_name = 'registration/registration.html'
-#     form_class = UserRegistrationForm
-#     success_url = reverse_lazy('login')
-#     title = 'Регистрация'
-#     success_message = 'Пользователь успешно создан!'
 
 
 @login_required
@@ -75,7 +66,7 @@ def test(request, pk):
         'question_pk': question_pk,
         'pk': 0,
     }
-    return render(request, 'mainapp/test/index.html', context)
+    return render(request, 'test/index.html', context)
 
 
 @login_required
@@ -99,7 +90,7 @@ def get_question(request, test_id, pk=0):
             results.pop('csrfmiddlewaretoken')
             answers_list = [i[0] for i in results.values()]
             count_rights = Answer.objects.filter(question_id__in=quiz.questions.all()).filter(is_right=1).count()
-            # count_wrongs = Answer.objects.filter(question_id__in=quiz.questions.all()).filter(is_right=0).count()
+
             context = {
                 'title': 'Результаты',
                 'questions_count': quiz.questions.count(),
@@ -109,7 +100,7 @@ def get_question(request, test_id, pk=0):
                 'all_rights': int(answers_list.count('True') / count_rights * 100),
             }
             form.clean_instance()
-            return render(request, 'mainapp/test/result.html', context)
+            return render(request, 'test/result.html', context)
         else:
             pk += 1
 
@@ -122,6 +113,6 @@ def get_question(request, test_id, pk=0):
             'pk': pk,
             'form': form,
         }
-        return render(request, 'mainapp/test/question.html', context)
+        return render(request, 'test/question.html', context)
     else:
         return HttpResponseRedirect(reverse_lazy('question', args=hold))

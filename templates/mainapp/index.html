@@ -1,0 +1,23 @@
+{% extends 'mainapp/base.html' %}
+{% load static %}
+
+{% block css %}
+    <link href="{% static 'css/index.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <h1 class="mt-5">Тестовое задание для Fortech</h1>
+                    <p>
+                        Простой сервис проведения тестирования по каким-либо темам. Тесты с вариантами
+                        ответов, один или несколько вариантов должны быть правильными. Тесты группируются в наборы
+                        тестов, которые затем пользователь может проходить и видеть свой результат.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

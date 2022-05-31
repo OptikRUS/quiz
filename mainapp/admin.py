@@ -1,5 +1,4 @@
 from django.contrib import admin
-from django.contrib.admin.widgets import FilteredSelectMultiple
 
 from mainapp.models import QuizCategory, Quiz, Question, Answer
 from django import forms
