@@ -31,14 +31,13 @@ ___
 
 <details>
   <summary>Скриншоты проекта</summary>
-  ![Image alt](https://github.com/OptikRUS/quiz/images/1.png)
-  ![Регистрация пользователя](https://github.com/OptikRUS/quiz/blob/master/images/2.png "Регистрация пользователя")
-  ![Категория тестов](/images/2.png "Категория тестов")
-  ![Страница теста](/images/3.png "Страница теста")
-  ![Вопросы к тесту](/images/4.png "Вопросы к тесту")
-  ![Вопросы к тесту](/images/5.png "Вопросы к тесту")
-  ![Результаты теста](/images/6.png "Результаты теста")
 
+[![Регистрация пользователя](https://raw.githubusercontent.com/OptikRUS/quiz/3e405ef786eac72dd4db00cfb14b6b83596b69f4/images/1.png)]()
+[![Категория тестов](https://raw.githubusercontent.com/OptikRUS/quiz/3e405ef786eac72dd4db00cfb14b6b83596b69f4/images/2.png)]()
+[![Страница теста](https://raw.githubusercontent.com/OptikRUS/quiz/3e405ef786eac72dd4db00cfb14b6b83596b69f4/images/3.png)]()
+[![Вопросы к тесту](https://raw.githubusercontent.com/OptikRUS/quiz/3e405ef786eac72dd4db00cfb14b6b83596b69f4/images/4.png)]()
+[![Вопросы к тесту](https://raw.githubusercontent.com/OptikRUS/quiz/3e405ef786eac72dd4db00cfb14b6b83596b69f4/images/5.png)]()
+[![Результаты теста](https://raw.githubusercontent.com/OptikRUS/quiz/3e405ef786eac72dd4db00cfb14b6b83596b69f4/images/6.png)]()
   
 </details>
 
