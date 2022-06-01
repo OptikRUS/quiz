@@ -10,15 +10,31 @@ class QuizAdminForm(forms.ModelForm):
         model = Quiz
         exclude = []
 
-    questions = forms.ModelMultipleChoiceField(
-        queryset=Question.objects.all().select_subclasses(), required=False,
-        label="вопросы", widget=FilteredSelectMultiple(verbose_name="вопросы", is_stacked=False))
+
+class QuestionAdminForm(QuizAdminForm):
+    class Meta:
+        model = Question
+        exclude = []
 
 
-class AnswerAdminForm(forms.ModelForm):
+class AnswerAdminForm(QuizAdminForm):
     class Meta:
         model = Answer
         exclude = []
+
+
+class AnswerAdminInline(admin.TabularInline):
+    model = Answer
+    form = AnswerAdminForm
+    extra = 0
+    fields = ('text', 'is_right')
+
+
+class QuestionAdminInline(admin.StackedInline):
+    model = Question
+    form = QuestionAdminForm
+    extra = 0
+    inlines = (AnswerAdminInline,)
 
 
 @admin.register(QuizCategory)
@@ -26,20 +42,10 @@ class QuizCategoryAdmin(admin.ModelAdmin):
     search_fields = ('title',)
 
 
-class QuestionAdminInline(admin.StackedInline):
-    model = Question
-    extra = 0
-
-
-class AnswerAdminInline(admin.TabularInline):
-    model = Answer
-    extra = 0
-    form = AnswerAdminForm
-
-
 @admin.register(Question)
 class QuestionAdmin(admin.ModelAdmin):
-    list_display = ('description', 'type_question')
+    list_display = ('description', 'type_question', )
+    list_filter = ('test',)
     search_fields = ('description', )
     inlines = (AnswerAdminInline, )
 

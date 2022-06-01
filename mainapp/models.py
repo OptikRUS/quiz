@@ -39,7 +39,7 @@ class Question(models.Model):
     objects = InheritanceManager()
 
     test = models.ForeignKey(
-        verbose_name="Тест",
+        verbose_name="Тесты",
         to=Quiz,
         on_delete=models.CASCADE,
         related_name="questions",
