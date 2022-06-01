@@ -2,6 +2,8 @@ from django.db import models
 from django.template.defaultfilters import truncatewords
 from django.contrib.auth.models import User
 
+from model_utils.managers import InheritanceManager
+
 
 class QuizCategory(models.Model):
     name = models.CharField('название категории', max_length=64, unique=True)
@@ -34,6 +36,8 @@ class Question(models.Model):
         ("2", "Ответ с выбором нескольких вариантов"),
     ]
 
+    objects = InheritanceManager()
+
     test = models.ForeignKey(
         verbose_name="Тест",
         to=Quiz,
@@ -60,20 +64,9 @@ class Question(models.Model):
 
 class Answer(models.Model):
     text = models.TextField(verbose_name="Ответ")
-    question = models.ForeignKey(
-        verbose_name="Вопрос",
-        to=Question,
-        on_delete=models.CASCADE,
-        related_name="answers",
-    )
-    user = models.ForeignKey(
-        verbose_name="Пользователь",
-        to=User,
-        on_delete=models.CASCADE,
-        related_name="user_answers",
-        blank=True,
-        null=True,
-    )
+    question = models.ForeignKey(verbose_name="Вопрос",  to=Question, on_delete=models.CASCADE, related_name="answers")
+    user = models.ForeignKey(verbose_name="Пользователь", to=User, blank=True, null=True, on_delete=models.CASCADE,
+                             related_name="user_answers",)
     is_admin = models.BooleanField(default=True)
     is_right = models.BooleanField(verbose_name="Правильный ответ", default=False)
 

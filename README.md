@@ -22,22 +22,25 @@ ___
   * Удаление вопросов/вариантов ответов/изменение правильных решений при редактировании тестового набора
 ___
 * Код в репозитории на GitHub. 
-* Список всех зависимостей должен храниться в __requirements.txt__, соответственно можно установить их командой pip install -r requirements.txt. 
-* Разработка должны вестись в virtualenv, но сама директория с virtualenv должна быть добавлена в .gitignore. 
-* Настройки должны храниться в settings.py, но также, при наличии settings_local.py в той же директории, настройки из settings_local.py должны переопределять настройки в settings.py. Т.е. если есть файл settings_local.py, то определенные в нем параметры имеют больший приоритет. 
-Сам файл settings_local.py добавляется в .gitignore. Таким образом у каждого девелопера и на бета сервере можно использовать кастомные настройки, например для соединения с БД. 
+* Список всех зависимостей должен храниться в __requirements.txt__, соответственно можно установить их командой ```pip install -r requirements.txt```. 
+* Разработка должны вестись в __virtualenv__, но сама директория с __virtualenv__ должна быть добавлена в __.gitignore__. 
+* Настройки должны храниться в __settings.py__, но также, при наличии __settings_local.py__ в той же директории, настройки из __settings_local.py__ должны переопределять настройки в __settings.py__. 
+Т.е. если есть файл __settings_local.py__, то определенные в нем параметры имеют больший приоритет. 
+Сам файл __settings_local.py__ добавляется в __.gitignore__. Таким образом у каждого девелопера и на бета сервере можно использовать кастомные настройки, например для соединения с БД. 
 * Должен работать один из способов создания структуры БД. Встроенный manage.py syncdb или миграции через South (будет плюсом). 
 * По фронтенду требований никаких не предъявляется. Интерфейс на твое усмотрение и он не будет оцениваться. Можно использовать любимый фреймворк или, например, воспользоваться Twitter Bootstrap.
 
 <details>
   <summary>Скриншоты проекта</summary>
-
-[![Регистрация пользователя](https://raw.githubusercontent.com/OptikRUS/quiz/3e405ef786eac72dd4db00cfb14b6b83596b69f4/images/1.png)]()
-[![Категория тестов](https://raw.githubusercontent.com/OptikRUS/quiz/3e405ef786eac72dd4db00cfb14b6b83596b69f4/images/2.png)]()
-[![Страница теста](https://raw.githubusercontent.com/OptikRUS/quiz/3e405ef786eac72dd4db00cfb14b6b83596b69f4/images/3.png)]()
-[![Вопросы к тесту](https://raw.githubusercontent.com/OptikRUS/quiz/3e405ef786eac72dd4db00cfb14b6b83596b69f4/images/4.png)]()
-[![Вопросы к тесту](https://raw.githubusercontent.com/OptikRUS/quiz/3e405ef786eac72dd4db00cfb14b6b83596b69f4/images/5.png)]()
-[![Результаты теста](https://raw.githubusercontent.com/OptikRUS/quiz/3e405ef786eac72dd4db00cfb14b6b83596b69f4/images/6.png)]()
+  
+[![Регистрация пользователя](https://raw.githubusercontent.com/OptikRUS/quiz/3e405ef786eac72dd4db00cfb14b6b83596b69f4/images/1.png "Регистрация пользователя")]()
+[![Категория тестов](https://raw.githubusercontent.com/OptikRUS/quiz/3e405ef786eac72dd4db00cfb14b6b83596b69f4/images/2.png "Категория тестов")]()
+[![Страница теста](https://raw.githubusercontent.com/OptikRUS/quiz/3e405ef786eac72dd4db00cfb14b6b83596b69f4/images/3.png "Страница теста")]()
+[![Вопросы к тесту](https://raw.githubusercontent.com/OptikRUS/quiz/3e405ef786eac72dd4db00cfb14b6b83596b69f4/images/4.png "Вопросы к тесту")]()
+[![Вопросы к тесту](https://raw.githubusercontent.com/OptikRUS/quiz/3e405ef786eac72dd4db00cfb14b6b83596b69f4/images/5.png "Вопросы к тесту")]()
+[![Результаты теста](https://raw.githubusercontent.com/OptikRUS/quiz/3e405ef786eac72dd4db00cfb14b6b83596b69f4/images/6.png "Результаты теста")]()
+[![Админка тесты](https://raw.githubusercontent.com/OptikRUS/quiz/2050d327157a071df96023f498e40e07b79c321f/images/7.png "Админка тесты")]()
+[![Админка вопросы](https://raw.githubusercontent.com/OptikRUS/quiz/2050d327157a071df96023f498e40e07b79c321f/images/8.png "Админка вопросы")]()
   
 </details>
 
