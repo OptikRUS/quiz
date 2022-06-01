@@ -32,14 +32,14 @@ ___
 <details>
   <summary>Скриншоты проекта</summary>
 
-[![Регистрация пользователя](https://raw.githubusercontent.com/OptikRUS/quiz/3e405ef786eac72dd4db00cfb14b6b83596b69f4/images/1.png) Регистрация пользователя]()
-[![Категория тестов](https://raw.githubusercontent.com/OptikRUS/quiz/3e405ef786eac72dd4db00cfb14b6b83596b69f4/images/2.png) Категория тестов]()
-[![Страница теста](https://raw.githubusercontent.com/OptikRUS/quiz/3e405ef786eac72dd4db00cfb14b6b83596b69f4/images/3.png) Страница теста]()
-[![Вопросы к тесту](https://raw.githubusercontent.com/OptikRUS/quiz/3e405ef786eac72dd4db00cfb14b6b83596b69f4/images/4.png) Вопросы к тесту)]()
-[![Вопросы к тесту](https://raw.githubusercontent.com/OptikRUS/quiz/3e405ef786eac72dd4db00cfb14b6b83596b69f4/images/5.png) Вопросы к тесту)]()
-[![Результаты теста](https://raw.githubusercontent.com/OptikRUS/quiz/3e405ef786eac72dd4db00cfb14b6b83596b69f4/images/6.png) Результаты теста]()
-[![Админка тесты](https://raw.githubusercontent.com/OptikRUS/quiz/3e405ef786eac72dd4db00cfb14b6b83596b69f4/images/7.png) Админка тесты]()
-[![Админка вопросы](https://raw.githubusercontent.com/OptikRUS/quiz/3e405ef786eac72dd4db00cfb14b6b83596b69f4/images/8.png) Админка вопросы]()
+[![Регистрация пользователя](https://raw.githubusercontent.com/OptikRUS/quiz/3e405ef786eac72dd4db00cfb14b6b83596b69f4/images/1.png "Регистрация пользователя")]()
+[![Категория тестов](https://raw.githubusercontent.com/OptikRUS/quiz/3e405ef786eac72dd4db00cfb14b6b83596b69f4/images/2.png "Категория тестов")]()
+[![Страница теста](https://raw.githubusercontent.com/OptikRUS/quiz/3e405ef786eac72dd4db00cfb14b6b83596b69f4/images/3.png "Страница теста")]()
+[![Вопросы к тесту](https://raw.githubusercontent.com/OptikRUS/quiz/3e405ef786eac72dd4db00cfb14b6b83596b69f4/images/4.png "Вопросы к тесту")]()
+[![Вопросы к тесту](https://raw.githubusercontent.com/OptikRUS/quiz/3e405ef786eac72dd4db00cfb14b6b83596b69f4/images/5.png "Вопросы к тесту")]()
+[![Результаты теста](https://raw.githubusercontent.com/OptikRUS/quiz/3e405ef786eac72dd4db00cfb14b6b83596b69f4/images/6.png "Результаты теста")]()
+[![Админка тесты](https://raw.githubusercontent.com/OptikRUS/quiz/2050d327157a071df96023f498e40e07b79c321f/images/7.png "Админка тесты")]()
+[![Админка вопросы](https://raw.githubusercontent.com/OptikRUS/quiz/2050d327157a071df96023f498e40e07b79c321f/images/8.png "Админка вопросы")]()
   
 </details>
 
