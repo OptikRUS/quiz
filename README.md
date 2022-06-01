@@ -39,8 +39,8 @@ ___
 [![Вопросы к тесту](https://raw.githubusercontent.com/OptikRUS/quiz/3e405ef786eac72dd4db00cfb14b6b83596b69f4/images/4.png "Вопросы к тесту")]()
 [![Вопросы к тесту](https://raw.githubusercontent.com/OptikRUS/quiz/3e405ef786eac72dd4db00cfb14b6b83596b69f4/images/5.png "Вопросы к тесту")]()
 [![Результаты теста](https://raw.githubusercontent.com/OptikRUS/quiz/3e405ef786eac72dd4db00cfb14b6b83596b69f4/images/6.png "Результаты теста")]()
-[![Админка тесты](https://raw.githubusercontent.com/OptikRUS/quiz/2050d327157a071df96023f498e40e07b79c321f/images/7.png "Админка тесты")]()
-[![Админка вопросы](https://raw.githubusercontent.com/OptikRUS/quiz/2050d327157a071df96023f498e40e07b79c321f/images/8.png "Админка вопросы")]()
+[![Админка тесты](https://raw.githubusercontent.com/OptikRUS/quiz/aaf027dd9893ecb9f97216236f95d69dc5912128/images/7.png "Админка тесты")]()
+[![Админка вопросы](https://raw.githubusercontent.com/OptikRUS/quiz/aaf027dd9893ecb9f97216236f95d69dc5912128/images/8.png "Админка вопросы")]()
   
 </details>
 
