@@ -1,5 +1,4 @@
 from django.contrib import admin
-from django import forms
 
 from mainapp.models import QuizCategory, Quiz, Question, Answer
 
@@ -9,7 +8,7 @@ class QuizCategoryAdmin(admin.ModelAdmin):
     search_fields = ('title',)
 
 
-class QuestionAdminInline(admin.TabularInline):
+class QuestionAdminInline(admin.StackedInline):
     model = Question
     extra = 0
 
@@ -17,15 +16,6 @@ class QuestionAdminInline(admin.TabularInline):
 class AnswerAdminInline(admin.TabularInline):
     model = Answer
     extra = 0
-
-
-class QuizAdminForm(forms.ModelForm):
-
-    answers = Answer.objects.all()
-
-    class Meta:
-        model = Quiz
-        exclude = []
 
 
 @admin.register(Question)
@@ -37,7 +27,6 @@ class QuestionAdmin(admin.ModelAdmin):
 
 @admin.register(Quiz)
 class QuizAdmin(admin.ModelAdmin):
-    forms = QuizAdminForm
 
     list_display = ('title', 'category')
     list_filter = ('category',)
