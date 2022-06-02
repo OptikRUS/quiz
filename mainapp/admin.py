@@ -1,6 +1,5 @@
 from django import forms
 from django.contrib import admin
-from django.contrib.admin.widgets import FilteredSelectMultiple
 
 from mainapp.models import QuizCategory, Quiz, Question, Answer
 
@@ -17,15 +16,16 @@ class QuestionAdminForm(QuizAdminForm):
         exclude = []
 
 
-class AnswerAdminForm(QuizAdminForm):
-    class Meta:
-        model = Answer
-        exclude = []
+class AnswerAdminForm(forms.models.BaseInlineFormSet):
+    def clean(self):
+        right_list = [form.cleaned_data['is_right'] for form in self.forms]
+        if len(set(right_list)) == 1:
+            raise forms.ValidationError("Выбери правильный/неправильный ответ")
 
 
 class AnswerAdminInline(admin.TabularInline):
     model = Answer
-    form = AnswerAdminForm
+    formset = AnswerAdminForm
     extra = 0
     fields = ('text', 'is_right')
 
