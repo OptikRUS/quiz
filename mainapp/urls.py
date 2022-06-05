@@ -1,7 +1,6 @@
-from django.contrib import admin
-from django.urls import path, include
+from django.urls import path
 
-from mainapp.views import index, registration, catalogs, test, get_question
+from mainapp.views import catalogs, test, get_question
 
 app_name = 'mainapp'
 

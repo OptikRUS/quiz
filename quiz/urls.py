@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.urls import path, include
 
-from mainapp.views import index, registration, catalogs, test, get_question
+from mainapp.views import index, registration
 
 
 urlpatterns = [
