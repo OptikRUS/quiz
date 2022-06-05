@@ -87,33 +87,37 @@ def get_question(request, test_id, pk=0):
         try:
             question = quiz.questions.all()[pk]
         except IndexError:
-            results = form.instance
-            results.pop('csrfmiddlewaretoken')
-            answers_list = [i[0] for i in results.values()]
-            count_rights = Answer.objects.filter(question_id__in=quiz.questions.all()).filter(is_right=1).count()
-
-            context = {
-                'title': 'Результаты',
-                'questions_count': quiz.questions.count(),
-                'total_answers': len(results),
-                'rights': answers_list.count('True'),
-                'wrongs': answers_list.count('False'),
-                'all_rights': int(answers_list.count('True') / count_rights * 100),
-            }
-            form.clean_instance()
-            return render(request, 'test/result.html', context)
+            return get_results(request, test_id, form)
         else:
             pk += 1
 
-        context = {
-            'title': 'Вопросы',
-            'question': question,
-            'description': question.description,
-            'answers': question.answers.all(),
-            'test_id': question.test_id,
-            'pk': pk,
-            'form': form,
-        }
-        return render(request, 'test/question.html', context)
+            context = {
+                'title': 'Вопросы',
+                'question': question,
+                'description': question.description,
+                'answers': question.answers.all(),
+                'test_id': question.test_id,
+                'pk': pk,
+                'form': form,
+            }
+            return render(request, 'test/question.html', context)
     else:
-        return HttpResponseRedirect(reverse_lazy('question', args=hold))
+        return HttpResponseRedirect(reverse_lazy('mainapp:question', args=hold))
+
+
+def get_results(request, test_id, form):
+    quiz = get_object_or_404(Quiz, pk=test_id)
+    results = form.instance
+    results.pop('csrfmiddlewaretoken')
+    answers_list = [i[0] for i in results.values()]
+    count_rights = Answer.objects.filter(question_id__in=quiz.questions.all()).filter(is_right=1).count()
+    context = {
+        'title': 'Результаты',
+        'questions_count': quiz.questions.count(),
+        'total_answers': len(results),
+        'rights': answers_list.count('True'),
+        'wrongs': answers_list.count('False'),
+        'all_rights': int(answers_list.count('True') / count_rights * 100),
+    }
+    form.clean_instance()
+    return render(request, 'test/result.html', context)

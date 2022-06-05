@@ -13,7 +13,7 @@
                     <h1 class="my-4">Каталог</h1>
                     <div class="list-group">
                         {% for category in catalog %}
-                            <a href="{% url 'catalog' category.pk %}" class="list-group-item">{{ category.name }}</a>
+                            <a href="{% url 'mainapp:catalog' category.pk %}" class="list-group-item">{{ category.name }}</a>
                         {% endfor %}
                     </div>
                 </div>
@@ -26,7 +26,7 @@
                                     <div class="card h-100">
                                         <div class="card-body">
                                             <h4 class="card-title">
-                                                <a href="{% url 'test' test.pk %}">{{ test.title }}</a>
+                                                <a href="{% url 'mainapp:test' test.pk %}">{{ test.title }}</a>
                                             </h4>
                                             <p class="card-text">{{ test.description }}</p>
                                         </div>
