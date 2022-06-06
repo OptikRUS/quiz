@@ -34,7 +34,7 @@ ___
   <summary>Скриншоты проекта</summary>
 
 [![Регистрация пользователя](https://raw.githubusercontent.com/OptikRUS/quiz/3e405ef786eac72dd4db00cfb14b6b83596b69f4/images/1.png "Регистрация пользователя")]()
-[![Категория тестов](https://raw.githubusercontent.com/OptikRUS/quiz/3e405ef786eac72dd4db00cfb14b6b83596b69f4/images/2.png "Категория тестов")]()
+[![Категория тестов](https://raw.githubusercontent.com/OptikRUS/quiz/0de4156f3d9717d3a832824b6f50e0352d8ab1fc/images/2.png "Категория тестов")]()
 [![Страница теста](https://raw.githubusercontent.com/OptikRUS/quiz/3e405ef786eac72dd4db00cfb14b6b83596b69f4/images/3.png "Страница теста")]()
 [![Вопросы к тесту](https://raw.githubusercontent.com/OptikRUS/quiz/3e405ef786eac72dd4db00cfb14b6b83596b69f4/images/4.png "Вопросы к тесту")]()
 [![Вопросы к тесту](https://raw.githubusercontent.com/OptikRUS/quiz/3e405ef786eac72dd4db00cfb14b6b83596b69f4/images/5.png "Вопросы к тесту")]()
