@@ -7,7 +7,7 @@ class QuestionForm(forms.Form):
     instance = {}
 
     def is_valid(self):
-        if len(self.data) == 1:
+        if len(self.data) == 1 or len(self.data) == 0:
             return False
         else:
             return True
@@ -19,5 +19,5 @@ class QuestionForm(forms.Form):
     def user_answer_instance(self):
         self.instance.update(self.data)
 
-    def clean_instance(self):
+    def clear_instance(self):
         self.instance.clear()
