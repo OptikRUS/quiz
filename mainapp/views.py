@@ -1,8 +1,8 @@
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
-from django.shortcuts import render, get_object_or_404
-from django.urls import reverse, reverse_lazy
+from django.shortcuts import render
+from django.urls import reverse
 
 from mainapp.models import Quiz, QuizCategory, Answer
 from mainapp.forms import QuestionForm
@@ -48,20 +48,20 @@ def catalogs(request, pk=0):
 
 @login_required
 def test(request, pk):
-    test_ = Quiz.objects.filter(id=pk).first()
-    questions = test_.questions.all()
+    quiz = Quiz.objects.filter(id=pk).first()
+    questions = quiz.questions.all()
     try:
-        question = questions[0]
+        question = questions.first()
         question_pk = question.pk
     except IndexError:
         question = 'нет вопросов'
         question_pk = 0
 
     context = {
-        'title': test_.title,
+        'title': quiz.title,
         'question': question,
-        'category': test_.category.name,
-        'description': test_.description,
+        'category': quiz.category.name,
+        'description': quiz.description,
         'questions_count': questions.count(),
         'test_id': pk,
         'question_pk': question_pk,
@@ -71,42 +71,39 @@ def test(request, pk):
 
 
 @login_required
-def get_question(request, test_id, pk=0):
-    hold = (test_id, pk - 1)
+def get_question(request, test_id, pk):
 
     if request.method == "POST":
         form = QuestionForm(request.POST)
     else:
         form = QuestionForm()
 
-    form.user_answer_instance()
-
     if form.is_valid():
-        quiz = get_object_or_404(Quiz, pk=test_id)
+        pk += 1
 
-        try:
-            question = quiz.questions.all()[pk]
-        except IndexError:
-            return get_results(request, test_id, form)
-        else:
-            pk += 1
+    form.user_answer_instance()
+    quiz = Quiz.objects.get(pk=test_id)
 
-            context = {
-                'title': 'Вопросы',
-                'question': question,
-                'description': question.description,
-                'answers': question.answers.all(),
-                'test_id': question.test_id,
-                'pk': pk,
-                'form': form,
-            }
-            return render(request, 'test/question.html', context)
-    else:
-        return HttpResponseRedirect(reverse_lazy('mainapp:question', args=hold))
+    try:
+        question = quiz.questions.all()[pk]
+    except IndexError:
+        return get_results(request, test_id, form)
+
+    context = {
+        'title': 'Вопросы',
+        'question': question,
+        'description': question.description,
+        'answers': question.answers.all(),
+        'test_id': test_id,
+        'pk': pk,
+        'form': form,
+    }
+
+    return render(request, 'test/question.html', context)
 
 
 def get_results(request, test_id, form):
-    quiz = get_object_or_404(Quiz, pk=test_id)
+    quiz = Quiz.objects.get(pk=test_id)
     results = form.instance
     results.pop('csrfmiddlewaretoken')
     answers_list = [i[0] for i in results.values()]
@@ -119,5 +116,5 @@ def get_results(request, test_id, form):
         'wrongs': answers_list.count('False'),
         'all_rights': int(answers_list.count('True') / count_rights * 100),
     }
-    form.clean_instance()
+    form.clear_instance()
     return render(request, 'test/result.html', context)
