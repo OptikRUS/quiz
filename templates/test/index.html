@@ -1,4 +1,4 @@
-{% extends 'mainapp/base.html' %}
+{% extends 'quizapp/base.html' %}
 
 {% block content %}
     <main>
@@ -12,7 +12,7 @@
                             <h3 class="mt-4">Количество вопросов: {{ questions_count }}</h3>
                             <div class="col-lg-12" style="margin-top: 33px;">
                                  {% if question_pk %}
-                                    <a href="{% url 'mainapp:question' test_id pk %}" class="btn btn-info btn-block">
+                                    <a href="{% url 'quizapp:question' test_id pk %}" class="btn btn-info btn-block">
                                         Начать
                                     </a>
                                 {% else %}

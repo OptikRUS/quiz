@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib import admin
 
-from mainapp.models import QuizCategory, Quiz, Question, Answer
+from quizapp.models import QuizCategory, Quiz, Question, Answer
 
 
 class QuizAdminForm(forms.ModelForm):
@@ -18,9 +18,13 @@ class QuestionAdminForm(QuizAdminForm):
 
 class AnswerAdminForm(forms.models.BaseInlineFormSet):
     def clean(self):
-        right_list = [form.cleaned_data['is_right'] for form in self.forms]
-        if len(set(right_list)) == 1:
-            raise forms.ValidationError("Выбери правильный/неправильный ответ")
+        if self.cleaned_data:
+            try:
+                right_list = [form.cleaned_data['is_right'] for form in self.forms]
+            except KeyError:
+                raise forms.ValidationError("Выбери правильный/неправильный ответ")
+            if len(set(right_list)) == 1:
+                raise forms.ValidationError("Выбери правильный/неправильный ответ")
 
 
 class AnswerAdminInline(admin.TabularInline):

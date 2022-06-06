@@ -4,14 +4,14 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse
 
-from mainapp.models import Quiz, QuizCategory, Answer
-from mainapp.forms import QuestionForm
+from quizapp.models import Quiz, QuizCategory, Answer
+from quizapp.forms import QuestionForm
 
 from quiz.forms import UserRegistrationForm
 
 
 def index(request):
-    return render(request, 'mainapp/index.html', {'title': 'Главная'})
+    return render(request, 'quizapp/index.html', {'title': 'Главная'})
 
 
 def registration(request):
@@ -43,7 +43,7 @@ def catalogs(request, pk=0):
         'tests': tests,
         'catalog': QuizCategory.objects.all(),
     }
-    return render(request, 'mainapp/tests.html', context)
+    return render(request, 'quizapp/tests.html', context)
 
 
 @login_required
@@ -53,7 +53,7 @@ def test(request, pk):
     try:
         question = questions.first()
         question_pk = question.pk
-    except IndexError:
+    except (IndexError, AttributeError):
         question = 'нет вопросов'
         question_pk = 0
 

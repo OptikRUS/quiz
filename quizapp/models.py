@@ -44,7 +44,7 @@ class Question(models.Model):
         on_delete=models.CASCADE,
         related_name="questions",
     )
-    description = models.TextField(verbose_name="Описание")
+    description = models.TextField(verbose_name="Вопрос")
     type_question = models.CharField(
         verbose_name="Тип вопроса", choices=CHOICES_TYPE, max_length=2
     )
@@ -63,7 +63,7 @@ class Question(models.Model):
 
 
 class Answer(models.Model):
-    text = models.TextField(verbose_name="Ответ")
+    text = models.TextField(verbose_name="Ответ", blank=False)
     question = models.ForeignKey(verbose_name="Вопрос",  to=Question, on_delete=models.CASCADE, related_name="answers")
     user = models.ForeignKey(verbose_name="Пользователь", to=User, blank=True, null=True, on_delete=models.CASCADE,
                              related_name="user_answers",)

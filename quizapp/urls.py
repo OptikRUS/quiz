@@ -1,8 +1,8 @@
 from django.urls import path
 
-from mainapp.views import catalogs, test, get_question
+from quizapp.views import catalogs, test, get_question
 
-app_name = 'mainapp'
+app_name = 'quizapp'
 
 urlpatterns = [
 
