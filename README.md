@@ -32,7 +32,7 @@ ___
 
 <details>
   <summary>Скриншоты проекта</summary>
-
+  
 [![Регистрация пользователя](https://raw.githubusercontent.com/OptikRUS/quiz/3e405ef786eac72dd4db00cfb14b6b83596b69f4/images/1.png "Регистрация пользователя")]()
 [![Категория тестов](https://raw.githubusercontent.com/OptikRUS/quiz/3e405ef786eac72dd4db00cfb14b6b83596b69f4/images/2.png "Категория тестов")]()
 [![Страница теста](https://raw.githubusercontent.com/OptikRUS/quiz/3e405ef786eac72dd4db00cfb14b6b83596b69f4/images/3.png "Страница теста")]()
